@@ -23,3 +23,6 @@ library(more)
 ## basic example code
 ```
 
+## Options
+
+  - `more_auto_assign_data`: If `TRUE` automatically assign the data payload of `more()` to `.more` in the global environment. `FALSE` by default.
