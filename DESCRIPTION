@@ -15,4 +15,4 @@ Imports:
     glue,
     rlang
 Suggests:
-  rstudioapi
+    rstudioapi
