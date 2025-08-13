@@ -16,7 +16,10 @@ has_more <- function() {
 
 get_more_info <- function() {
   if (!has_more()) {
-    rlang::abort("No error information has been saved for more() yet.")
+    rlang::abort(
+      "No error information has been saved for more() yet.",
+      call = rlang::caller_env()
+    )
     return(invisible(NULL))
   }
   MORE_ENV$mores
