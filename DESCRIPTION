@@ -1,0 +1,16 @@
+Package: more
+Title: Get more() out of errors and warnings
+Version: 0.0.0.9000
+Authors@R:
+    person("Miles", "McBain", , "miles.mcbain@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0003-2865-2548"))
+Description: Enhanced messages for errors and warnings that can return data.
+License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
+    license
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.1
+Imports: 
+    cli,
+    glue,
+    rlang
