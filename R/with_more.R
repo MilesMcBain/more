@@ -1,4 +1,4 @@
-with_more <- function(err, more_message, more_data = NULL, with_class = "error") {
+with_more <- function(err, more_message, more_data = NULL, with_class = "error", call = rlang::caller_env()) {
 
   handler_args <- list()
   handler_args[[with_class]] <- function(err) {
@@ -9,7 +9,9 @@ with_more <- function(err, more_message, more_data = NULL, with_class = "error")
       # recursively
       class(err) <- c(class(err), "with_more")
     }
-
+    if (inherits(err, "simpleError")) {
+      err$call <- call
+    }
     register_more(
       more_message,
       more_data
@@ -28,4 +30,8 @@ with_more <- function(err, more_message, more_data = NULL, with_class = "error")
     handler_args
   )
 
+}
+
+function() {
+  rlang::abort
 }
