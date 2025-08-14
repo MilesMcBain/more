@@ -1,9 +1,14 @@
 with_more <- function(err, more_message, more_data = NULL, with_class = "error") {
 
-    handler_args <- list()
-    handler_args[[with_class]] <- function(err) {
-    new_message <- glue::glue("{err$message}\n{more_notification_message()}")
-    err$message <- new_message
+  handler_args <- list()
+  handler_args[[with_class]] <- function(err) {
+    if (!inherits(err, "with_more")) {
+      new_message <- glue::glue("{err$message}\n{more_notification_message()}")
+      err$message <- new_message
+      # We add this class so se won't keep appending our more() message
+      # recursively
+      class(err) <- c(class(err), "with_more")
+    }
 
     register_more(
       more_message,
@@ -19,7 +24,8 @@ with_more <- function(err, more_message, more_data = NULL, with_class = "error")
   # and pass that into try_fetch, whilst ensuring we do not evaluate 'err'
   # which will blow up in our face.
   do.call(
-    function(...) rlang::try_fetch(err, ...), handler_args
+    function(...) rlang::try_fetch(err, ...),
+    handler_args
   )
 
 }
