@@ -11,7 +11,7 @@ more <- function() {
   #      although I don't love this because it
   #      may block the return of data until it resolves.
   if (is.character(more_info$message) && !file.exists(more_info$message)) {
-    cat(more_info$message)
+    cat(more_info$message, "\n")
   } else {
     cli::cli_h1("more() information")
 
