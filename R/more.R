@@ -1,3 +1,21 @@
+#' Retrieve more context associated with a condition (error, warning etc.)
+#'
+#' This function displays any detailed explanation messages and or additonal data
+#' sets attached to a condition like an error or warning with [with_more()].
+#'
+#' Datasets are returned so can be assigned from the return of this function.
+#'
+#' It is also possible to automatically assign datasets after a `more()` call
+#' with option `more_auto_assign_data`, which binds them to `.more` in the
+#' global environment.
+#'
+#' `more()` can be called multiple times if desired. The context returned is
+#' always for the last signalled condition that attached context using the
+#' [with_more()].
+#'
+#' `more_data()` is a shortcut that returns the data portion of the attached
+#' context, skipping the detailed explanation.
+#' @export
 more <- function() {
 
   more_info <- get_more_info()
@@ -19,7 +37,7 @@ more <- function() {
       if (rstudioapi_installed_available()) {
         rstudioapi::navigateToFile(more_info$message)
       } else {
-        edit(file = more_info$message)
+        utils::edit(file = more_info$message)
         # TODO possibly better just to read and output here
       }
     } else if (rlang::is_function(more_info$message)) {
@@ -42,6 +60,7 @@ more <- function() {
 }
 
 # a shortcut to the data, useful for examples in explanations
+#' @rdname more
 more_data <- function() {
   more_info <- get_more_info()
   cli::cli_h2("more() data")

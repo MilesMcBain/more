@@ -1,4 +1,6 @@
 
+NOW DOGFOODING
+
 # more
 
 <!-- badges: start -->
@@ -174,8 +176,31 @@ Obviously in this contrived case, the bad rows can be found quite quickly. The u
 
 ### Open a help topic
 
+```r
+rlang::abort("This is a problem. But there is help.") |>
+  with_more(
+    more_mesage = \() ?base::sweep,
+    more_data = list(your_data = mtcars)
+  )
+# more() opens help topic for sweep()
+# still prints data
+```
+
+This gives you the convenince of doing your detailed error documentation in Roxygen, and having it live alongside the source code.
+
 ### Open an Rmd file
 
+```r
+rlang::abort("This is a problem. But there is a document.") |>
+  with_more(
+    more_message = "morefiles/assistance_with_problem.Rmd",
+    more_data = list(useful_infromation = something_useful)
+  )
+
+# more opens the Rmd file in the text editor.
+
+```
+In this case the user can enjoy explanatory prose alongside code chunks. It may be useful to do something like `more_info <- more_data()` at the start of the first code chunk to ensure they have the relevant data to hand.
 
 ## Options
 
