@@ -29,7 +29,7 @@ Let's say we are validating some tabular user input. Due to the context, we know
 
 The user has input some rows that contain negative values. What's the nicest possible error we can give them look like?
 
-We might immediate conceive of a message like `Column must not be negative`.
+We might immediate conceive of a message like `Column 'Supply' must not be negative`.
 
 But perhaps we could give them some indication as to how many rows, or even which ones need to be fixed. That way they can have confidence they have addressed the problem before running the code again.
 
@@ -38,14 +38,14 @@ This poses some challenges though. We might try:
 ```r
 rlang::abort(
   glue::glue(
-    "Column must not be negative. ",
+    "Column 'Supply' must not be negative. ",
     "Fix areas {paste0(bad_ids, collapse = ', ' )}"
     )
 )
 ```
 
 ```
-Error: ! Column must not be negative. Fix areas 303021052, 303021053, 303021054,
+Error: ! Column 'Supply' must not be negative. Fix areas 303021052, 303021053, 303021054,
 303021055, 303021056, 303021057, 303021058, 303021059, 303031060, 303031061,
 303031062, 303031063, 303031064, 303031065, 303031066, 303041067, 303041068,
 303041069, 303041070, 303041071, 303051072, 303051073, 303051074, 303051075,
@@ -83,7 +83,7 @@ When the user hits the error they see:
 
 ```
 Error:
-! Column must not be negative
+! Column 'Supply' must not be negative
 Call more() for additional error information...
 Run `rlang::last_trace()` to see where the error occurred.
 ```
@@ -92,7 +92,7 @@ And when they call `more()`:
 
 ```
 ── Negative values for Supply ─────────────────────────────────────
-The spatial had negative values for Supply. This has been shown to cause
+The spatial data had negative values for Supply. This has been shown to cause
 unstable estimates. Negative Supply was permitted in previous releases, so you
 may still find old configuration that contains negatives. Be careful when
 copy-pasting model inputs. See dataset `negative_supply_rows`.
