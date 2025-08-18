@@ -6,12 +6,12 @@ NOW DOGFOODING
 <!-- badges: start -->
 <!-- badges: end -->
 
-`more` lets you attach context to errors, warnings or any condition, that can viewed via the `more()` call.
+`more` lets you attach context to errors, warnings, or any condition, that can viewed via the `more()` call.
 
 This context may be:
 
   - detailed explanations
-  - data sets that assist with understand the issue
+  - datasets that assist with understanding the issue
 
 It is inspired by [`rustc`'s detailed error explainations](https://rustc-dev-guide.rust-lang.org/diagnostics.html).
 
