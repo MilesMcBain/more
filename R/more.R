@@ -61,6 +61,7 @@ more <- function() {
 
 # a shortcut to the data, useful for examples in explanations
 #' @rdname more
+#' @export
 more_data <- function() {
   more_info <- get_more_info()
   cli::cli_h2("more() data")
