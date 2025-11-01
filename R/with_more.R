@@ -33,7 +33,7 @@
 #' `rlang::caller_fun()` which is likely correct in many cases. The default may be
 #' incorrect if `with_more` is nested within a helper function. A different call can be supplied for use in this case.
 #' Although it's probably easier just to use condition signalling from `{rlang}`
-#' e.g. [rlang::abort()] and set up the call correctly per thier documentation. It
+#' e.g. [rlang::abort()] and set up the call correctly per their documentation. It
 #' will not be rewritten by `with_more` in that case.
 #' @export
 #' @seealso [more()] for retrieval of context.
