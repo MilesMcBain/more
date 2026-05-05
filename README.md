@@ -20,6 +20,8 @@ It is inspired by [`rustc`'s detailed error explainations](https://rustc-dev-gui
 You can install the development version of more like so:
 
 ``` r
+remotes::install_github("milesmcbain/more")
+# OR
 pak::pkg_install("milesmcbain/more")
 ```
 
